@@ -18,7 +18,7 @@ private:
     void deleteNode(Node*);
 
 public:
-    Tree();
+    Tree(Node*);
     ~Tree();
     float evaluate();
 

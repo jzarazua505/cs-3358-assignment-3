@@ -52,10 +52,24 @@ string infixToPostfix(string input) {
     return output;
 }
 
-// Tree postfixToTree(string postfix) {
-//     stack<Node> nodes;
+Tree postfixToTree(string postfix) {
+    stack<Node*> nodes;
+    vector<string> tokens = split(postfix);
+    unordered_set<string> operators = {"+", "-", "*", "/"};
+    for (int i = 0; i < tokens.size(); i++) {
+        Node *newNode = new Node{tokens[i]};
+        if (operators.count(newNode->data)) {
+            newNode->left = nodes.top();
+            nodes.pop();
+            newNode->right = nodes.top();
+            nodes.pop();
+        }
+        nodes.push(newNode);
+    }
+    Tree tree(nodes.top());
+    return tree;
 
-// }
+}
 
 int main() {
     string infixString = "13 + 24 * 35 / 46";

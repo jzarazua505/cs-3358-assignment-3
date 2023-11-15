@@ -1,7 +1,7 @@
 #include "tree.h"
 
-Tree::Tree() {
-    root = nullptr;
+Tree::Tree(Node* initRoot) {
+    root = initRoot;
 }
 
 Tree::~Tree() {
