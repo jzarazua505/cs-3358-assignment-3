@@ -5,11 +5,14 @@
 #include <string>
 #include <stack>
 #include <unordered_map>
+#include <vector>
 
-using std::string;
+#include "tree.h"
+
 using std::cout;
 using std::endl;
 using std::stack;
 using std::unordered_map;
+using std::vector;
 
 #endif

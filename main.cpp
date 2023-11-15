@@ -1,5 +1,17 @@
 #include "main.h"
 
+vector<string> split(string input) {
+    vector<string> output = {};
+    int i = 0;
+    while(i < input.length()) {
+        int tokenEnd = input.find(" ", i);
+        string token = input.substr(i, tokenEnd - i);
+        output.push_back(token);
+        i += token.length() + 1;
+    }
+    return output;
+}
+
 string infixToPostfix(string input) {
     stack<string> opstack;
     unordered_map<string, int> prec = {
@@ -9,11 +21,10 @@ string infixToPostfix(string input) {
         {"-", 2},
         {"(", 1}
     };
-    int i = 0;
+    vector<string> tokens = split(input);
     string output = "";
-    while(i < input.length()) {
-        int tokenEnd = input.find(" ", i);
-        string token = input.substr(i, tokenEnd - i);
+    for (int i = 0; i < tokens.size(); i++) {
+        string token = tokens[i];
         if (token == "(") {
             opstack.push(token);            
         } else if (token == ")") {
@@ -33,7 +44,6 @@ string infixToPostfix(string input) {
         } else {
             output.append(token + " ");
         }
-        i += token.length() + 1;
     }
     while (!opstack.empty()) {
         output.append(opstack.top() + " ");
@@ -42,8 +52,13 @@ string infixToPostfix(string input) {
     return output;
 }
 
+// Tree postfixToTree(string postfix) {
+//     stack<Node> nodes;
+
+// }
+
 int main() {
-    string infixString = "( ( ( ( 1 * ( 2 + 3 ) ) - 3 ) + 4 ) * 5 )";
+    string infixString = "13 + 24 * 35 / 46";
     string postfixString = infixToPostfix(infixString);
     cout << "infix: " << infixString << endl;
     cout << "postfix: " << postfixString << endl;
