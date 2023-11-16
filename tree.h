@@ -20,10 +20,6 @@ private:
 public:
     Tree(Node*);
     ~Tree();
-    float evaluate();
-
 };
-
-
 
 #endif

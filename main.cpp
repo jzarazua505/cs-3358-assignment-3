@@ -55,10 +55,10 @@ string infixToPostfix(string input) {
 Tree postfixToTree(string postfix) {
     stack<Node*> nodes;
     vector<string> tokens = split(postfix);
-    unordered_set<string> operators = {"+", "-", "*", "/"};
+    unordered_set<string> ops = {"+", "-", "*", "/"};
     for (int i = 0; i < tokens.size(); i++) {
         Node *newNode = new Node{tokens[i]};
-        if (operators.count(newNode->data)) {
+        if (ops.count(newNode->data)) {
             newNode->left = nodes.top();
             nodes.pop();
             newNode->right = nodes.top();
@@ -66,9 +66,8 @@ Tree postfixToTree(string postfix) {
         }
         nodes.push(newNode);
     }
-    Tree tree(nodes.top());
-    return tree;
-
+    
+    return Tree(nodes.top());
 }
 
 int main() {
