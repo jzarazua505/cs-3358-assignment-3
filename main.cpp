@@ -49,6 +49,7 @@ string infixToPostfix(string input) {
         output.append(opstack.top() + " ");
         opstack.pop();
     }
+    output.pop_back();
     return output;
 }
 
@@ -66,7 +67,6 @@ Tree postfixToTree(string postfix) {
         }
         nodes.push(newNode);
     }
-    
     return Tree(nodes.top());
 }
 
@@ -75,6 +75,8 @@ int main() {
     string postfixString = infixToPostfix(infixString);
     cout << "infix: " << infixString << endl;
     cout << "postfix: " << postfixString << endl;
+    Tree tree = postfixToTree(postfixString);
+    cout << tree.toInfix() << endl;
 
     return 0;
 }

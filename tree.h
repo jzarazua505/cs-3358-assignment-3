@@ -16,10 +16,17 @@ class Tree
 private:
     Node *root;
     void deleteNode(Node*);
+    void toInfix(Node*, string&);
+    void toPrefix(Node*, string&);
+    void toPostfix(Node*, string&);
 
 public:
     Tree(Node*);
     ~Tree();
+    string toInfix();
+    string toPrefix();
+    string toPostfix();
+
 };
 
 #endif
