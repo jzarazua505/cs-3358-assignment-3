@@ -69,3 +69,24 @@ string Tree::toPostfix() {
     output.pop_back();
     return output;
 }
+
+float Tree::evaluate(Node *currentNode) {
+    string data = currentNode->data;
+    if (data != "+" && data != "-" && data != "*" && data != "/") {
+        return std::stof(data);
+    }
+    if (data == "+") {
+        return evaluate(currentNode->left) + evaluate(currentNode->right);
+    }
+    if (data == "-") {
+        return evaluate(currentNode->left) - evaluate(currentNode->right);
+    }
+    if (data == "*") {
+        return evaluate(currentNode->left) * evaluate(currentNode->right);
+    }
+    return evaluate(currentNode->left) / evaluate(currentNode->right);
+}
+
+float Tree::evaluate() {
+    return evaluate(root);
+}

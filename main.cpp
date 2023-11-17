@@ -76,9 +76,10 @@ int main() {
     cout << "infix: " << infixString << endl;
     cout << "postfix: " << postfixString << endl;
     Tree tree = postfixToTree(postfixString);
-    cout << "infix: "<< tree.toInfix() << endl;
-    cout << "postfix: "<< tree.toPostfix() << endl;
-    cout << "prefix: "<< tree.toPrefix() << endl;
+    cout << "infix: " << tree.toInfix() << endl;
+    cout << "postfix: " << tree.toPostfix() << endl;
+    cout << "prefix: " << tree.toPrefix() << endl;
+    cout << "evaluate: " << tree.evaluate() << endl;
 
     return 0;
 }

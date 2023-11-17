@@ -3,7 +3,7 @@
 
 #include <string>
 
-using std::string; 
+using std::string;
 
 struct Node {
     string data;
@@ -19,6 +19,7 @@ private:
     void toInfix(Node*, string&);
     void toPrefix(Node*, string&);
     void toPostfix(Node*, string&);
+    float evaluate(Node*);
 
 public:
     Tree(Node*);
@@ -26,7 +27,7 @@ public:
     string toInfix();
     string toPrefix();
     string toPostfix();
-
+    float evaluate();
 };
 
 #endif
