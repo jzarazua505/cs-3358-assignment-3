@@ -38,17 +38,34 @@ string Tree::toInfix() {
 }
 
 void Tree::toPrefix(Node *currentNode, string &output) {
+    if (!currentNode) {
+        return;
+    }
+    output.append(currentNode->data + " ");
+    toPrefix(currentNode->left, output);
+    toPrefix(currentNode->right, output);
 
 }
 
 string Tree::toPrefix() {
-    return "";
+    string output;
+    toPrefix(root, output);
+    output.pop_back();
+    return output;
 }
 
 void Tree::toPostfix(Node *currentNode, string &output) {
-
+    if (!currentNode) {
+        return;
+    }
+    toPostfix(currentNode->left, output);
+    toPostfix(currentNode->right, output);
+    output.append(currentNode->data + " ");
 }
 
 string Tree::toPostfix() {
-    return "";
+    string output;
+    toPostfix(root, output);
+    output.pop_back();
+    return output;
 }

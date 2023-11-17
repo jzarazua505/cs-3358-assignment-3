@@ -60,9 +60,9 @@ Tree postfixToTree(string postfix) {
     for (int i = 0; i < tokens.size(); i++) {
         Node *newNode = new Node{tokens[i]};
         if (ops.count(newNode->data)) {
-            newNode->left = nodes.top();
-            nodes.pop();
             newNode->right = nodes.top();
+            nodes.pop();
+            newNode->left = nodes.top();
             nodes.pop();
         }
         nodes.push(newNode);
@@ -76,7 +76,9 @@ int main() {
     cout << "infix: " << infixString << endl;
     cout << "postfix: " << postfixString << endl;
     Tree tree = postfixToTree(postfixString);
-    cout << tree.toInfix() << endl;
+    cout << "infix: "<< tree.toInfix() << endl;
+    cout << "postfix: "<< tree.toPostfix() << endl;
+    cout << "prefix: "<< tree.toPrefix() << endl;
 
     return 0;
 }
